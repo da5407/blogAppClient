@@ -1,0 +1,32 @@
+<div class="mainDiv">
+    <h2>布落格項目細節</h2>
+    <div *ngIf="blogDetails" class="row fMargin">
+        <div role="alert" *ngIf="message" class="alert alert-danger" (click)="message=''">
+            {{ message }}
+        </div>
+        <div class="input-group fMargin">
+            <div class="input-group-prepend">
+                <span class="input-group-text">IdOfBlog：</span>
+            </div>
+            <input class="form-control" type="text" name="id" [(ngModel)]="blogDetails.id" autocapitalize="none" />
+        </div>
+        <div class="input-group fMargin">
+            <div class="input-group-prepend">
+                <span class="input-group-text">BlogTitle：</span>
+            </div>
+            <input class="form-control" type="text" name="title" [(ngModel)]="blogDetails.title" autocapitalize="none" />
+        </div>
+        <div class="input-group fMargin ">
+            <div class="input-group-prepend ">
+                <span class="input-group-text ">Content ：</span>
+            </div>
+            <input class="form-control" type="text" name="content" [(ngModel)]="blogDetails.content" autocapitalize="none" />
+        </div>
+    </div>
+    <div class="row fMargin">
+        <div class="btn-group" role="group" aria-label="Basic example">
+            <button type="button" class="btn btn-success" (click)="goBack()" style="margin-left: 20px;">返回</button>
+
+        </div>
+    </div>
+</div>

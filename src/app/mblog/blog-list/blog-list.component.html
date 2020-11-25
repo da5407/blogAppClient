@@ -1,0 +1,48 @@
+<div class="mainDiv">
+    <h2>布落格清單</h2>
+    <form #queryForm="ngForm">
+        <div role="alert" *ngIf="message" class="alert alert-danger" (click)="message=''">
+            {{ message }}
+        </div>
+        <div class="input-group fMargin">
+            <div class="input-group-prepend">
+                <span class="input-group-text">BlogTitle：</span>
+            </div>
+            <input class="form-control" type="text" name="title" [(ngModel)]="blog.title" autocapitalize="none" />
+        </div>
+        <div class="input-group fMargin ">
+            <div class="input-group-prepend ">
+                <span class="input-group-text ">Content ：</span>
+            </div>
+            <input class="form-control" type="text" name="content" [(ngModel)]="blog.content" autocapitalize="none" />
+        </div>
+
+    </form>
+    <div class="row fMargin">
+        <div class="btn-group" role="group" aria-label="Basic example">
+            <button *ngIf="!blog.id" type="button" class="btn btn-success" (click)="insert()" style="margin-left: 20px;">新增</button>
+            <button *ngIf="blog.id" type="button" class="btn btn-success" (click)="update()" style="margin-left: 20px;">修改</button>
+            <button *ngIf="blog.id" type="button" class="btn btn-success" (click)="delete()" style="margin-left: 20px;">刪除</button>
+            <button *ngIf="blog.id" type="button" class="btn btn-success" (click)="cancel()" style="margin-left: 20px;">取消</button>
+
+        </div>
+    </div>
+
+    <div class="row">
+        <table>
+            <tr>
+                <th>Title</th>
+                <th>Content</th>
+                <th>功能</th>
+            </tr>
+            <tr *ngFor="let item of blogList" (click)="rowClick(item)">
+                <td>{{item.title}}</td>
+                <td>{{item.content}}</td>
+                <td>
+                    <a (click)="toDetail(item.id)">細節</a>
+                    <!-- routerLink="/blog/bdetail/123" -->
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
